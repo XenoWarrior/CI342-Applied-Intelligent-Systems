@@ -6,10 +6,12 @@ public class FlockController : MonoBehaviour {
 
     public GameObject Agent;
 
-    public static int TotalAgents = 30;
+    public static int TotalAgents = 100;
+    public static float OpenSpace = 10;
+
     public static List<GameObject> AgentList = new List<GameObject>();
+
     public static Vector3 GoalPosition = Vector3.zero;
-    public static float OpenSpace = 5;
 
 	// Use this for initialization
 	void Start ()
@@ -20,7 +22,10 @@ public class FlockController : MonoBehaviour {
             var AgentPos = new Vector3(Random.RandomRange(-OpenSpace, OpenSpace), Random.RandomRange(-OpenSpace, OpenSpace), Random.RandomRange(-OpenSpace, OpenSpace));
             AgentList.Add(Instantiate(Agent, AgentPos, Quaternion.identity));
         }
-	}
+
+        AgentList[0].transform.localScale = new Vector3(10.0f, 10.0f, 10.0f);
+        AgentList[0].GetComponent<FlockAI>().IsPredator = true;
+    }
 	
 	// Update is called once per frame
 	void Update ()
