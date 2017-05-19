@@ -37,7 +37,8 @@ public class FlockAI : MonoBehaviour {
         }
 
         // Making sure that the agent remains in a certain space
-        if (Vector3.Distance(transform.position, Vector3.zero) >= FlockController.OpenSpace)
+        // GameObject.Find can affect performance. For this level of testing, it should be okay.
+        if (Vector3.Distance(transform.position, Vector3.zero) >= GameObject.Find("FlockManager").GetComponent<FlockController>().OpenSpace)
         {
             Vector3 AgentDirection = Vector3.zero - transform.position;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(AgentDirection), RotationSpeed * Time.deltaTime);

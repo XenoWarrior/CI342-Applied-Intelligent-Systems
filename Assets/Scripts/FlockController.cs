@@ -6,8 +6,8 @@ public class FlockController : MonoBehaviour {
 
     public GameObject Agent;
 
-    public static int TotalAgents = 100;
-    public static float OpenSpace = 10;
+    public int TotalAgents = 100;
+    public float OpenSpace = 10;
 
     public static List<GameObject> AgentList = new List<GameObject>();
 
